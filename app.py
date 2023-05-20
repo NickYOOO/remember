@@ -79,13 +79,12 @@ def list_get():
 
     return jsonify({'result': result})
 
-@app.route("/post/delete", methods=["POST"])
+@app.route("/post/delete", methods=["DELETE"])
 def delete_post():
     id_receive = request.form['_id_give']
 
     db.remember.delete_one({"_id": ObjectId(id_receive)})
 
     return jsonify({'msg': '게시물 삭제완료'})    
-
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

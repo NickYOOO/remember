@@ -114,7 +114,32 @@ $(function () {
                     'display': 'none'
                 });
             });
+            $('.del').on('click', delete_list);
 
+            function delete_list() {
+                let id = $('#detail').data('num');
+                let all_id = rows.map(rows => rows['_id']);
+                let indexNum = $.inArray(id, all_id);
+                let this_data = rows[indexNum]
+
+                let pw = this_data['pw'];
+                let u_pw = prompt('비밀번호를 입렵해주세요!')
+
+
+                let formData = new FormData();
+                formData.append("_id_give", id);
+                if (pw === u_pw) {
+                    fetch('/post/delete', { method: "DELETE", body: formData }).then((res) => res.json()).then((data) => {
+                        alert(data['msg']);
+
+                        window.location.reload();
+                    });
+                } else {
+                    alert("비밀번호를 확인하세요");
+                    $('#edit-pw').focus()
+                    return false;
+                }
+            }
 
         });
 
@@ -347,22 +372,5 @@ $(function () {
         }
     }
 
-
-    // function list_delete() {
-    //     let delete_info =
-    //     fetch('/post/update').then((res) => res.json()).then((data) => {
-    //         let remember = data['result'];
-
-    //         for (let i in remember) {
-    //             let $pw = remember[i]['pw'];
-    //             check_info[i] = {
-    //                 'id': $id,
-    //                 'pw': $pw
-    //             };
-    //         }
-    //   });
-
-    
-    // }
 });
 
