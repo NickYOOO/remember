@@ -13,7 +13,7 @@ $(function () {
                 let image = a['img'];
                 let name = a['name'];
                 let mbti = a['mbti'];
-                let _id = a['_id']; 
+                let _id = a['_id'];
 
                 let temp_html = ` <figure class="content" data-num="${_id}">
                                       <img src="${image}" />
@@ -29,7 +29,7 @@ $(function () {
                                       </button>
                                   </figure>`;
                 $('#columns').append(temp_html);
-            
+
             });
 
             //  detail-Modal , Get ,Modal close status
@@ -38,35 +38,84 @@ $(function () {
 
                 let id = $(this).data('num');
 
-                $('.detail').attr('data-num', id);
+                $('#detail').attr('data-num', id);
 
                 let all_id = rows.map(rows => rows['_id']);
 
                 let indexNum = $.inArray(id, all_id);
 
                 let this_data = rows[indexNum]
-                
-                let $image =this_data['img']
+
+                let $image = this_data['img']
                 let $name = this_data['name'];
                 let $mbti = this_data['mbti'];
                 let $blog = this_data['blog'];
                 let $advantages = this_data['advantages'];
                 let $collaboration = this_data['collaboration'];
                 let _id = this_data['num'];
-                
+
                 $('.info-image img').attr('src', $image);
                 $('.info-name').text($name);
                 $('.info-mbti').text($mbti);
-                $('.info-blog').text($blog);
+                $('.info-blog').attr('href', $blog);
                 $('.info-advantages').text($advantages);
                 $('.info-collaboration').text($collaboration);
-
-                $('.info-overlay').attr('data-num', _id);
 
                 detail_modal.css({
                     'display': 'block'
                 });
             });
+
+            //  edit-submit button
+            $('.detail-flex .edit').click(function () {
+                let detail = $('.detail-overlay');
+                let edit = $('.edit-overlay');
+                let _id = $('.detail-overlay').data('id');
+
+                $('.edit-overlay').attr('data-num', _id);
+
+                detail.css('display', 'none');
+                edit.css('display', 'block');
+
+                info_load();
+            });
+
+
+
+            function info_load() {   //  게시글 정보 input에 불러오기
+
+                let id = $('#detail').data('num');
+                let all_id = rows.map(rows => rows['_id']);
+                let indexNum = $.inArray(id, all_id);
+                let this_data = rows[indexNum]
+
+                let $image = this_data['img']
+                let $name = this_data['name'];
+                let $mbti = this_data['mbti'];
+                let $blog = this_data['blog'];
+                let $advantages = this_data['advantages'];
+                let $collaboration = this_data['collaboration'];
+
+                $('.edit-overlay #edit-img').val($image);
+                $('.edit-overlay #edit-aname').val($name);
+                $('.edit-overlay #edit-mbti').val($mbti);
+                $('.edit-overlay #edit-blog').val($blog);
+                $('.edit-overlay #update-advantages').text($advantages);
+                $('.edit-overlay #update-collaboration').text($collaboration);
+
+
+            }
+
+            // edit-cancel button
+            $('.edit-cancel').click(function () {
+                let $modal = $('.edit-overlay');
+
+                $modal.css({
+                    'display': 'none'
+                });
+            });
+
+
         });
 
         //   open detail-Modal
@@ -148,44 +197,16 @@ $(function () {
     // edit Modal update
 
     $('.edit-submit').click(update);
-    
-    function info_load() {   //  게시글 정보 input에 불러오기
-        let this_data = $('.detail-overlay').data('num');
-
-        let $image =this_data['img']
-                let $name = this_data['name'];
-                let $mbti = this_data['mbti'];
-                let $blog = this_data['blog'];
-                let $advantages = this_data['advantages'];
-                let $collaboration = this_data['collaboration'];
-                
-                $('.edit-image img').attr('src', $image);
-                $('.edit-name').text($name);
-                $('.edit-mbti').text($mbti);
-                $('.edit-blog').text($blog);
-                $('.edit-advantages').text($advantages);
-                $('.edit-collaboration').text($collaboration);
-
-            
-
-        // let $img = $('.info-image img').attr('src');
-        // let $name = $('.info-name').text();
-        // let $comment = $('.info-comment').text();
-
-        // $('#edit-name').attr('value', $name);
-        // $('#edit-comment').text($comment);
-        // $('#edit-img').attr('value', $img);
-    }
 
     function update() {     //  미완
         let check_info = new Array();
         fetch('/post/update').then((res) => res.json()).then((data) => {
             let remember = data['result'];
 
-            for(let i in remember) {
+            for (let i in remember) {
                 let $pw = remember[i]['pw'];
                 check_info[i] = {
-                    'id' : $id, 
+                    'id': $id,
                     'pw': $pw
                 };
             }
@@ -201,7 +222,7 @@ $(function () {
         let $check_pw = $('#edit-pw').val();
         let $id = $('.detail-overlay').data('num');
 
-        if( 1 == $check_pw ) {
+        if (1 == $check_pw) {
             let img = $('#img').val();
             let name = $('#aname').val();
             let mbti = $('#mbti').val();
@@ -220,46 +241,26 @@ $(function () {
             formData.append("advantages_give", advantages);
             formData.append("collaboration_give", collaboration);
             formData.append("pw_give", pw);
-            
-            fetch(`/post/update`, { method: "POST", 
+
+            fetch(`/post/update`, {
+                method: "POST",
                 body: formData
             })
-            .then((res) => res.json())
-            .then((data) => {
-                alert(data['msg']);
-                window.location.reload();
-            });
+                .then((res) => res.json())
+                .then((data) => {
+                    alert(data['msg']);
+                    window.location.reload();
+                });
         }
-        
+
     }
-     //  edit-submit button
-    $('.detail-flex .edit').click(function() {    
-        let detail = $('.detail-overlay');
-        let edit = $('.edit-overlay');
-        let _id = $('.detail-overlay').data('id');
 
-        $('.edit-overlay').attr('data-id', _id);
-
-        detail.css('display', 'none');
-        edit.css('display', 'block');
-
-        info_load();
-    });
-
-    // edit-cancel button
-    $('.edit-cancel').click(function() {
-        let $modal = $('.edit-overlay');
-        
-        $modal.css({
-            'display' : 'none'
-        });
-    });
 
 
 
     //  작성하기 유효성 검사
     $('.submit').click(post_check);
-     $('.edit-submit').click(edit_check);    
+    $('.edit-submit').click(edit_check);
 
 
     function post_check() {
@@ -305,13 +306,13 @@ $(function () {
     }
     //수정하기 유효성 검사
     function edit_check() {
-        const checkImg = $('#overlay #img');
-        const checkName = $('#overlay #aname');
-        const checkMbti = $('#overlay #mbti');
-        const checkBlog = $('#overlay #blog');
-        const checkAdvantages = $('#overlay #edit-advantages');
-        const checkCollaboration = $('#overlay #edit-collaboration');
-        const checkPw = $('#overlay #pw');
+        const checkImg = $('#overlay #edit-img');
+        const checkName = $('#overlay #edit-aname');
+        const checkMbti = $('#overlay #edit-mbti');
+        const checkBlog = $('#overlay #edit-blog');
+        const checkAdvantages = $('#overlay #update-advantages');
+        const checkCollaboration = $('#overlay #update-collaboration');
+        const checkPw = $('#overlay #edit-pw');
 
         if (!checkImg.val()) {      //  frn의 product의 value값이 없을 때 = input에 입력한 값이 없을 때
             alert('이미지url을 입력해 주세요');
@@ -346,5 +347,22 @@ $(function () {
         }
     }
 
+
+    // function list_delete() {
+    //     let delete_info =
+    //     fetch('/post/update').then((res) => res.json()).then((data) => {
+    //         let remember = data['result'];
+
+    //         for (let i in remember) {
+    //             let $pw = remember[i]['pw'];
+    //             check_info[i] = {
+    //                 'id': $id,
+    //                 'pw': $pw
+    //             };
+    //         }
+    //   });
+
+    
+    // }
 });
 

@@ -37,6 +37,7 @@ def info_post():
 
     return jsonify({'msg':'게시물 등록완료'})
 
+# method put 변경?
 @app.route("/post/update", methods=["POST"])
 def update_remember():
     img_receive = request.form['img_give']
@@ -77,6 +78,14 @@ def list_get():
         result.append(remember_list)
 
     return jsonify({'result': result})
+
+@app.route("/post/delete", methods=["POST"])
+def delete_post():
+    id_receive = request.form['_id_give']
+
+    db.remember.delete_one({"_id": ObjectId(id_receive)})
+
+    return jsonify({'msg': '게시물 삭제완료'})    
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

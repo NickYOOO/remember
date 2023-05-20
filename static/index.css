@@ -6,6 +6,7 @@
     font-weight: 400;
     font-style: normal;
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
     margin: 0;
@@ -16,119 +17,113 @@
     text-decoration: none;
 }
 
-
-
-/* header CSS */
+/* header CSS*/
 .inner {
     width: 1280px;
     margin: 0 auto;
 }
 
 header {
-    background-color: #3F4E4F;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9;
+    width: 100%;
 }
 
-header .inner, section.inner {
-    display: flex;    
+header .inner,
+section.inner {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-header .inner img {
-    width: 300px;
-    margin-top: 5px;
+header img {
+    width: 100%;
 }
 
 
 
-
-/* team box CSS */
+/* team box CSS*/
 .info-team {
-    margin-top: 70px;  
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 1300px;
+    margin: 0 auto;
 }
 
-.box-team {
-    margin-bottom: 15px;
-    padding: 15px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 40px;
-    
-  
-    margin-top: 20px;  
-    width: 600px;
-    background-color: #630a105d;
-    color: #fff;
+.info-team .box-team {
+    margin: 120px 0px;
+    text-align: center;
 }
 
-.box-team > p {
-    display: flex;
-    justify-content: center;
+.info-team .box-team img {
+    width: 20%
+}
 
+.info-team .box-team p {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 45%;
+    display: inline-block;
+    margin-left: 95px;
+    line-height: 1.6;
+    vertical-align: top;
+    font-size: 20px;
+    padding-top: 100px;
+    color: #646464;
+    text-align: left;
+}
+
+.info-team .box-team p span {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: #003310;
 }
 
 
-
-/* team card CSS */
+/* team card CSS*/
 #columns {
-    width: 600px;
+    width: 1300px;
     margin: 20px auto 0;
-    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  
-  #columns figure {
-    width: 200px;
+    margin-bottom: 120px;
+}
 
+#columns figure {
+    width: 25%;
     display: inline-block;
     text-align: center;
-  
-    margin-bottom: 15px;
-    padding: 15px;
+    padding: 20px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-  
-    border-radius: 40px;
-  }
-  
-  #columns figure img {
+    border-radius: 20px;
+    margin: 2% 2%;
+}
+
+#columns figure img {
     width: 100%;
-    border-radius: 30px;
-  }
-  
-  #columns figure figcaption.name {
+    border-radius: 15px;
+    height: 300px;
+}
+
+#columns figure figcaption.name {
     font-size: 24px;
     font-weight: 700;
-    color: #630A10;
-    padding: 10px;
-    margin-top: 11px;
-  }
-  
-  #columns figure figcaption.mbti {
-    padding: 10px;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#columns figure figcaption.mbti {
     border-radius: 18px;
-    color: white;
-    background-color: #4E6C50;
-  }
-  
-  #columns figure figcaption.caption {
+    color: #215632;
+    margin-bottom: 20px;
+}
+
+#columns figure figcaption.caption {
     padding: 10px;
     color: #617A55;
-  }
+}
 
 
 
-  /*post btn CSS */
-  .btnarea {
+/*post btn CSS*/
+.btnarea {
     position: fixed;
     left: 50%;
     bottom: 50px;
@@ -167,7 +162,6 @@ header .inner img {
 
 
 
-
 /* post Modal CSS*/
 
 div.fieldset {
@@ -183,7 +177,7 @@ div.fieldset {
     margin: 20px 0;
     padding: 20px;
     transform: translate(-50%, -50%);
-    border-radius: 5%;
+    border-radius: 15px;
     background-color: #fff;
 }
 
@@ -200,7 +194,8 @@ div.fieldset {
     vertical-align: middle;
 }
 
-.edit-overlay, .join-overlay button {
+.edit-overlay,
+.join-overlay button {
     border: 0;
     font-size: 16px;
 }
@@ -210,7 +205,9 @@ label {
     height: 100%;
 }
 
-.join-overlay, .info-overlay, .edit-overlay{
+.join-overlay,
+.info-overlay,
+.edit-overlay {
     height: 100%;
     width: 100%;
     display: none;
@@ -229,10 +226,10 @@ label {
 }
 
 .image-box,
-.name-box, 
-.mbti-box ,
+.name-box,
+.mbti-box,
 .blog-box,
-.comment-box, 
+.comment-box,
 .pw-box {
     width: 360px;
     border-radius: 10px;
@@ -240,7 +237,8 @@ label {
     margin-top: 15px;
 }
 
-#edit-advantages, #edit-collaboration {
+#edit-advantages,
+#edit-collaboration {
     width: 100%;
     border-radius: 5%;
     resize: none;
@@ -254,7 +252,7 @@ label {
     margin-top: 15px;
 }
 
-.modal-btn-area > button {
+.modal-btn-area>button {
     width: 160px;
     height: 40px;
     padding: 0;
@@ -265,7 +263,7 @@ label {
     background-color: #537188;
 }
 
-.modal-btn-area > button:hover {
+.modal-btn-area>button:hover {
     background-color: #537188;
     color: #E1D4BB;
     font-weight: 700;
@@ -275,19 +273,20 @@ label {
     opacity: 0.7;
 }
 
+/************* detail Modal heejung Edit End *************/
 /* detail Modal CSS*/
-.detail {
 
+/* .detail클래스는 멤버 list 자세히 버튼 부분 (team card CSS 부분으로 올리면 좋을듯 합니다!)*/
+.detail {
     width: 100%;
     height: 40px;
 
-    background-color: #630A10;
-    color: #FCF0C8;
+    background-color: #215632;
+    color: white;
     font-size: 20px;
 
     border-radius: 50px;
-    border: 2px solid whitesmoke;
-
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,13 +297,17 @@ label {
 
 .detail:hover {
     font-weight: 700;
-    border: 5px solid #630A10;
+    border: 1px solid #215632;
     box-sizing: border-box;
+    background-color: transparent;
+    color: black;
 
     opacity: 1;
 }
 
-.detail-overlay, .join-overlay,.edit-overlay {
+.detail-overlay,
+.join-overlay,
+.edit-overlay {
     height: 100%;
     width: 100%;
     display: none;
@@ -315,77 +318,34 @@ label {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
- .detail-flex {
-
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    
-    justify-content: center;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    
-    top: 450px;
-    left: 50%;
-    
-    
-    width: 400px;
-    max-height: 600px;
-    
+.detail-sec {
+    width: 60vw;
+    height: 80vh;
     background-color: #fff;
-} 
-.info-flex {
-    display: flex;
-    gap: 30px;
-    align-items:center;
-}
-
-/* 왜 안먹힐까? 
-
-.info-flex > p,a {
-    margin-top: 10px ;
-} */
-
-.info-subject {
-    background-color: #3F4E4F;
-    color: #fff;
-
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.info-image img {
-    width: 200px;
-    max-height: 200px;
-    
-    object-fit: cover;
-
-    margin-bottom: 20px;
-
-    border-radius: 50%;
-}
-
-.info-advantages, .info-collaboration {
-    text-align: center;
-
-    margin-top: 15px;
-    margin-bottom: 15px;
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: pre-wrap; 
-}
-
-.info-comment {
-    margin-bottom: 20px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    padding: 2%;
+    border-radius: 5px;
+    overflow: scroll;
 }
 
 .edit-icons {
-    position: absolute;
-    top: -50px;
-    right: 0px;
+    display: flex;
+    justify-content: end;
 }
 
-.edit-icons > img {
+.edit-icons>div {
+    width: 20px;
+    margin-left: 5px;
+}
+
+.edit-icons>div>img {
+    width: 100%;
+}
+
+.edit-icons>img {
     cursor: pointer;
     width: 40px;
     margin: 5px;
@@ -393,3 +353,197 @@ label {
     border-radius: 50%;
     background-color: #fff;
 }
+
+.modal-close {
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    width: 40px;
+    cursor: pointer;
+    top: -1px;
+    margin-top: -1px;
+    margin-left: 6px!important;
+}
+.modal-close .inner {
+    width: inherit;
+	text-align: center;
+    cursor: pointer;
+}
+.modal-close label {
+    font-size: 0.4em;
+    line-height: 0.4em;
+    text-transform: uppercase;
+    color: #000;
+    transition: all .3s ease-in;
+    position: relative;
+    opacity: 0;
+    top: -2px;
+    cursor: pointer;
+}
+.modal-close .inner:before,
+.modal-close .inner:after {
+	position: absolute;
+	content: '';
+	height: 1px;
+	width: inherit;
+	background: #000000;
+	left: 0;
+	transition: all .3s ease-in;
+}
+.modal-close .inner:before {
+	top: 48%;
+	transform: rotate(45deg);
+}
+
+.modal-close .inner:after {
+	bottom: 50%;
+	transform: rotate(-45deg);
+}
+.modal-close.outer:hover label {
+	opacity: 1;
+}
+.modal-close.outer:hover .inner:before,
+.modal-close.outer:hover .inner:after {
+	transform: rotate(0);
+}
+
+.modal-close.outer:hover .inner:before {
+	top: 0;
+}
+
+.modal-close.outer:hover .inner:after {
+	bottom: 0;
+}
+
+
+.info-flex {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.info-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 300px;
+}
+
+.info-text {
+    line-height: 1.6;
+}
+
+.info-text p.info-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.info-text a {
+    color: inherit;
+}
+
+.info-contents .info-subject {
+    background-color: #a7b6b8;
+    color: #fff;
+    padding: 3px 5px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 3px;
+}
+
+.info-advantages,
+.info-collaboration {
+    margin: 25px 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+/* 댓글 입력*/
+.re-input {
+    display: flex;
+}
+
+.re-input input,
+.re-input textarea {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin-right: 0.5%;
+}
+
+.re-input input {
+    width: 10%;
+}
+
+.re-input textarea {
+    width: 80%;
+}
+
+.re-input button {
+    width: calc(100% - 91%);
+    background-color: rgb(152, 207, 252);
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+input:focus,
+textarea:focus {
+    color: rgb(34, 34, 34);
+    border-color: rgb(152, 207, 252);
+    outline: 0;
+}
+
+/* 댓글 리스트  */
+#comment-list {
+    margin: 20px 0;
+    background-color: #f1f1f1;
+    padding: 20px 15px;
+    border-radius: 5px;
+}
+
+.comment-list-item {
+    padding: 20px 10px;
+    border-bottom: solid 1px #e1e1e1;
+}
+
+.comment-list-item:last-child {
+    border-bottom: 0;
+}
+
+.comment-get-items {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-edit-btn {
+    font-size: 0.8rem;
+}
+
+.comment-get-items div button {
+    background-color: transparent;
+    border: 0;
+    color: rgb(73, 73, 73);
+    padding: 0 5px;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: rgb(73, 73, 73);
+}
+
+/* 왜 안먹힐까? 
+
+.info-flex > p,a { > 하면 바로 아래 자식만 지칭!
+    margin-top: 10px ;
+} */
+
+/************* detail Modal heejung Edit End *************/
